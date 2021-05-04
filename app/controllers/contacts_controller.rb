@@ -5,7 +5,14 @@ class ContactsController < ApplicationController
     end
 
     def create 
-    
+        @contact = Contact.new(contacts_params)
+        @contact.save
+    end
+
+    private
+
+    def contacts_params
+        params.require(:contact).permit(:email, :message)
     end
 
 end
