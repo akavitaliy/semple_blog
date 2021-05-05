@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
-  def new
-                
+  
+  def show 
+    @articles = Article.find(params[:id])
+  end
+  
+  def new             
   end  
   
   def create
@@ -8,9 +12,10 @@ class ArticlesController < ApplicationController
 
     if @articles.valid?
       @articles.save
-  else
+      redirect_to @articles
+    else
       render action: 'new'
-  end
+    end
   end
 
   private
