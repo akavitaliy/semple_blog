@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   
   def index 
-    @articles = Article.all
+    @articles = Article.order "created_at DESC"
   end
   
   def show 
@@ -14,9 +14,9 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(articles_params)
 
-    if @articles.valid?
-      @articles.save
-      redirect_to @articles
+    if @article.valid?
+        @article.save
+        redirect_to @article
     else
       render action: 'new'
     end
