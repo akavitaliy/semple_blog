@@ -1,3 +1,21 @@
 <h2><%= @article.title %></h2>
 <br>
 <p><%= @article.text %></p>
+<br>
+<p>
+    <%= form_for([@article, @article.comments.build]) do |f| %>
+	<p>
+		<%= f.label :author %><br>
+		<%= f.text_field :author %>	
+	</p>
+
+	<p>
+		<%= f.label :body %><br>
+		<%= f.text_area :body %>	
+	</p>
+
+	<p>
+		<%= f.submit 'comment' %>
+	</p>     
+    <% end %>
+</p>
