@@ -2,6 +2,22 @@
 <br>
 <p><%= @article.text %></p>
 <br>
+<hr>
+<h2>Comments:</h2>
+
+<% @article.comments.each do |comment| %>
+
+   <h4> 
+      <%= comment.author %> 
+   </h4>
+
+   <p> 
+      <%= comment.body %> 
+   </p> 
+   <br>
+<% end %>
+
+<hr>
 <p>
     <%= form_for([@article, @article.comments.build]) do |f| %>
 	<p>
