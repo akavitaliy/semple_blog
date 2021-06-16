@@ -14,22 +14,42 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+    .layer1 {
+      margin-top: 20px;
+      text-align: center;
+      background-color: #ccc; /* Цвет фона */
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      flex-wrap:wrap;      
+    }       
+    </style>
     
   </head>
 
   <body>
+  <div class="container">
 
-    <br>
-    <% if user_signed_in? %>
-      <span>Hello, <%= current_user.email %></span>
-      <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %>
-    <% end %>
+    <div class="layer1">
+
+      <%= link_to 'Articles', articles_path %> |
+      <%= link_to 'New article', new_article_path %> |
+
+      <% if user_signed_in? %>
+        <span>Hello, <%= current_user.username %></span>
+        <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %> 
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path %> | <%= link_to 'Sign Up', new_user_registration_path %>
+      <% end %>      
+       
+    </div>  
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
+  </div>
   </body>
 </html>

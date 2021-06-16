@@ -5,11 +5,12 @@
 <hr>
 <h2>Comments:</h2>
 
+<br>
 <% @article.comments.each do |comment| %>
 
-   <i><h4> 
+   <i><p><b> 
       <%= comment.author %> 
-   </h4></i>
+   </b></p></i>
 
    <p> 
       <%= comment.body %> 
